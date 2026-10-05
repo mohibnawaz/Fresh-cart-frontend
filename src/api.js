@@ -1,4 +1,5 @@
 // Every call goes through the API Gateway (port 8080) via the Vite proxy.
+const BASE = 'https://spring-api-gateway-0rm3.onrender.com'
 const listeners = new Set()
 let counter = 0
 
@@ -34,7 +35,7 @@ async function call(method, url, body, silent = false) {
 }
 
 // silent = true skips the on-screen API log (used by background auto-refresh)
-export const getProducts = (silent) => call('GET', '/api/products', undefined, silent)
-export const addProduct = (p) => call('POST', '/api/products', p)
-export const getOrders = (silent) => call('GET', '/api/orders', undefined, silent)
-export const addOrder = (o) => call('POST', '/api/orders', o)
+export const getProducts = (silent) => call('GET', `${BASE}/api/products`, undefined, silent)
+export const addProduct = (p) => call('POST', `${BASE}/api/products`, p)
+export const getOrders = (silent) => call('GET', `${BASE}/api/orders`, undefined, silent)
+export const addOrder = (o) => call('POST', `${BASE}/api/orders`, o)
